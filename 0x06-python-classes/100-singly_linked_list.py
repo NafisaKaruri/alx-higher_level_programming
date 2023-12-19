@@ -10,7 +10,8 @@ class Node:
         data: the data of the node.
     """
     def __init__(self, data, next_node=None):
-        """Creates a new node instance.
+        """
+        Creates a new node instance.
 
         Args:
             __data: the data of the node.
@@ -21,12 +22,13 @@ class Node:
 
     @property
     def data(self):
-        """Returns the data of the node."""
+        """Returns: the data of the node."""
         return self.__data
 
     @data.setter
     def data(self, value):
-        """Setter of data.
+        """
+        Setter of data.
 
         Args:
             value (int): the data of the node.
@@ -40,12 +42,13 @@ class Node:
 
     @property
     def next_node(self):
-        """Returns the next_node instance."""
+        """Returns: the next_node instance."""
         return self.__next_node
 
     @next_node.setter
     def next_node(self, value):
-        """Setter of next_node.
+        """
+        Setter of next_node.
 
         Args:
             value (Node): next node of a Node.
@@ -86,7 +89,6 @@ class SinglyLinkedList:
             x.sort()
             x.append(str(temp.data))
             temp = temp.next_node
-
         x.sort(key=int)
         return("\n".join(x))
 
