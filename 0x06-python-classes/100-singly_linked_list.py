@@ -7,15 +7,16 @@ class Node:
     Class that defines a Node.
 
     Attributes:
-        data: the data of the node.
+        data (int): the data of the node.
+        next_node (Node, optional): teh next node in the list
     """
     def __init__(self, data, next_node=None):
         """
         Creates a new node instance.
 
         Args:
-            __data: the data of the node.
-            __next_node: the next node.
+            data: the data of the node.
+            next_node: the next node.
         """
         self.data = data
         self.next_node = next_node
