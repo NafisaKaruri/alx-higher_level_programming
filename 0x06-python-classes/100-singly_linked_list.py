@@ -8,7 +8,7 @@ class Node:
 
     Attributes:
         data (int): the data of the node.
-        next_node (Node, optional): teh next node in the list
+        next_node (Node, optional): teh next node in the list.
     """
     def __init__(self, data, next_node=None):
         """Creates a new node instance.
@@ -87,7 +87,7 @@ class SinglyLinkedList:
             temp = temp.next_node
 
         x.sort(key=int)
-        return("\n".join(x))
+        return ("\n".join(x))
 
     def sorted_insert(self, value):
         """Inserts a new node in a specific position.
