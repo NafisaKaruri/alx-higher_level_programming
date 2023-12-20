@@ -23,14 +23,14 @@ class MagicClass:
         else:
             self.__radius = radius
 
-    def area(self, radius):
+    def area(self):
         """
         Returns: the area of a circle.
         """
         return (self.__radius ** 2) * math.pi
 
-    def circumference(self, radius):
+    def circumference(self):
         """
-        Returns: the circuference of a circle.
+        Returns: the circumference of a circle.
         """
         return (2 * math.pi) * self.__radius
