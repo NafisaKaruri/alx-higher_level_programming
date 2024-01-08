@@ -1,0 +1,118 @@
+The ``7-base_geometry`` module
+======================
+
+Using ``BaseGeometry``
+-------------------
+
+This is a file in reStructuredText format.
+`MyList`` from the ``1-my_list`` module:
+
+    >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+
+Basic:
+
+- int value:
+
+    >>> b = BaseGeometry()
+    >>> b.integer_validator("cheese", 1)
+
+- int value with empty_string name:
+
+    >>> b.integer_validator("cheese", 1)
+
+ValueErrors:
+
+- zero value:
+
+    >>> b.integer_validator("cheese", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: cheese must be greater than 0
+
+- negative value:
+
+    >>> b.integer_validator("cheese", -1)
+    Traceback (most recent call last):
+    ...
+    ValueError: cheese must be greater than 0
+
+- value that is <= 0 and empty_string name:
+
+    >>> b.integer_validator("", -1)
+    Traceback (most recent call last):
+    ...
+    ValueError:  must be greater than 0
+
+TypeErrors:
+
+- non_integer value and empty_string name:
+
+    >>> b.integer_validator("", "1")
+    Traceback (most recent call last):
+    ...
+    TypeError:  must be an integer
+
+- string value:
+
+    >>> b.integer_validator("cheese", "1")
+    Traceback (most recent call last):
+    ...
+    TypeError: cheese must be an integer
+
+- bool value:
+
+    >>> b.integer_validator("bool", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: bool must be an integer
+
+- list value:
+
+    >>> b.integer_validator("list", [1, 2, 3])
+    Traceback (most recent call last):
+    ...
+    TypeError: list must be an integer
+
+- tuple value:
+
+    >>> b.integer_validator("tuple", (1, 2, 3))
+    Traceback (most recent call last):
+    ...
+    TypeError: tuple must be an integer
+
+- set value:
+
+    >>> b.integer_validator("set", {1, 2, 3})
+    Traceback (most recent call last):
+    ...
+    TypeError: set must be an integer
+
+- dictionary value:
+
+    >>> b.integer_validator("dic", {'a':1, 'b':2, 'c':3})
+    Traceback (most recent call last):
+    ...
+    TypeError: dic must be an integer
+
+- None value:
+
+    >>> b.integer_validator("None", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: None must be an integer
+
+less arguments:
+
+- one argumet:
+
+    >>> b.integer_validator("int")
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+- no arguments:
+
+    >>> b.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
