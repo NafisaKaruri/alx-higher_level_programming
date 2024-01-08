@@ -9,17 +9,33 @@ This is a file in reStructuredText format.
 
     >>> MyList = __import__("1-my_list").MyList
 
+MyList is subclass of list:
+
+    >>> issubclass(MyList, list)
+    True
+
 empty list:
 
     >>> lst = MyList()
     >>> isinstance(lst, list)
     True
+    >>> type(lst) == MyList
+    True
     >>> lst.print_sorted()
     []
 
-positive ints:
+print_sorted is a method
+
+    >>> type(lst.print_sorted)
+    <class 'method'>
+
+one positive int:
 
     >>> lst.append(1)
+    >>> lst.print_sorted()
+    [1]
+
+positive ints:
     >>> lst.append(3)
     >>> lst.append(2)
     >>> lst.print_sorted()
@@ -38,7 +54,13 @@ positive with infinite int:
     ...
     ValueError: invalid literal for int() with base 10: 'inf'
 
-max possitive int:
+don't modify the list and returns a new list:
+    >>> lst.print_sorted()
+    [0, 1, 2, 3]
+    >>> lst
+    [1, 3, 2, 0]
+
+max positive int:
 
     >>> lst.append(10000000000000000000000000000000000000000000)
     >>> lst.print_sorted()
