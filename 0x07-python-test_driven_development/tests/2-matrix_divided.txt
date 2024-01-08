@@ -1,0 +1,72 @@
+The ``2-matrix_divided`` module
+======================
+
+Using ``matrix_divided``
+-------------------
+
+This is a file in reStructuredText format.
+``matrix_divided`` from the ``2-matrix_divided`` module:
+
+    >>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+normal inputs:
+
+    >>> a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    >>> b = [[1, 2, 3], [4, 5, 6]]
+
+normal tests:
+
+    >>> print(matrix_divided(a, 4))
+    [[0.25, 0.5, 0.75], [1.0, 1.25, 1.5], [1.75, 2.0, 2.25]]
+    >>> print(matrix_divided(b, 3))
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+error inputs:
+
+    >>> nothin = None
+    >>> empty_list = []
+    >>> empty_rows = [[], [], []]
+    >>> non_list_row = [1, [2, 3]]
+    >>> uneven_list = [[1, 2], [3]]
+    >>> not_all_nums = [["a", 1, 2], [3, "2b", 4]]
+
+error tests:
+
+    >>> matrix_divided(nothin, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided(empty_list, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided(empty_rows, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided(non_list_row, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided(uneven_list, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: Each row of the matrix must have the same size
+
+    >>> matrix_divided(not_all_nums, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+division by zero:
+
+    >>> matrix_divided(a, 0)
+    Traceback (most recent call last):
+    ...
+    ZeroDivisionError: division by zero
+
+    TypeError: add_integer() missing 1 required positional argument: 'a'

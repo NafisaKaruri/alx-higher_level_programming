@@ -1,0 +1,34 @@
+The ``101-lazy_matrix_mul`` module
+==============================
+
+Using ``lazy_matrix_mul``
+-------------------------
+
+This is a file in reStructuredText format.
+``lazy_matrix_mul`` from the ``101-lazy_matrix_mul`` module:
+
+    >>> lazy_matrix_mul = __import__("101-lazy_matrix_mul").lazy_matrix_mul
+
+Basic:
+
+    >>> m_a = [[1, 2], [3, 4]]
+    >>> m_b = [[5, 6], [7, 8]]
+    >>> lazy_matrix_mul(m_a, m_b)
+    array([[19, 22],
+           [43, 50]])
+
+Test with non-square matrices:
+
+    >>> m_a = [[1, 2, 3], [4, 5, 6]]
+    >>> m_b = [[7, 8], [9, 10], [11, 12]]
+    >>> lazy_matrix_mul(m_a, m_b)
+    array([[ 58,  64],
+           [139, 154]])
+
+Test with zero matrices:
+
+    >>> m_a = [[0, 0], [0, 0]]
+    >>> m_b = [[1, 2], [3, 4]]
+    >>> lazy_matrix_mul(m_a, m_b)
+    array([[0, 0],
+           [0, 0]])

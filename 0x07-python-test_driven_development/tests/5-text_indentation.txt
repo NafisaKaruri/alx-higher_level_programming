@@ -1,0 +1,77 @@
+The ```5-text_indentation` module
+======================
+
+Using ``text_indentation``
+-------------------
+
+This is a file in reStructuredText format.
+``text_indentation`` from the ``5-text_indentation`` module:
+
+    >>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Basic with spaces:
+
+    >>> text_indentation("Nafisa  : where  ? tf. am i ")
+    Nafisa:
+    <BLANKLINE>
+    where?
+    <BLANKLINE>
+    tf.
+    <BLANKLINE>
+    am i
+
+The delimeters:
+
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+Delimeters with spaces:
+
+    >>> text_indentation("           .   ? :  ")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+With new lines:
+
+    >>> text_indentation("Nafisa  :\n where  ? tf. am i ")
+    Nafisa:
+    <BLANKLINE>
+    <BLANKLINE>
+     where?
+    <BLANKLINE>
+    tf.
+    <BLANKLINE>
+    am i
+
+Non string:
+
+    >>> text_indentation(4)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+Without delimeters:
+
+    >>> text_indentation("    aloha there  ")
+    aloha there
+
+Empty string:
+
+    >>> text_indentation("")
+    
+
+Nothing:
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'

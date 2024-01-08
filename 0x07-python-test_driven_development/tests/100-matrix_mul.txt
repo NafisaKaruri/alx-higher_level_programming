@@ -1,0 +1,123 @@
+The ``100_matrix_mul`` module
+======================
+
+Using ``matrix_mul``
+-------------------
+
+This is a file in reStructuredText format.
+``matrix_mul`` from the ``100-matrix_mul`` module:
+
+    >>> matrix_mul = __import__("100-matrix_mul").matrix_mul
+
+normal inputs:
+
+    >>> a = [[1, 2], [3, 4]]
+    >>> b = [[1, 2], [3, 4]]
+    >>> c = [[1]]
+
+normal tests:
+
+    >>> print(matrix_mul(a, b))
+    [[7, 10], [15, 22]]
+
+error inputs:
+
+    >>> not_matrix = "hehe"
+    >>> strings = ["hehe", "hoho"]
+    >>> string_matrix = [["hehe"], ["hoho"]]
+    >>> empty_list = []
+    >>> empty_rows = [[]]
+    >>> uneven_list = [[1, 2], [3]]
+    >>> not_all_nums = [["a", 1, 2], [3, "2b", 4]]
+
+error tests:
+
+- cannot be multiplied:
+    >>> matrix_mul(a, c)
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a and m_b can't be multiplied
+
+- not a matrix:
+
+    >>> matrix_mul(not_matrix, a)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list
+
+    >>> matrix_mul(a, not_matrix)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list
+
+- strings:
+
+    >>> matrix_mul(strings, a)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list of lists
+
+    >>> matrix_mul(a, strings)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list of lists
+
+- empty lists:
+
+    >>> matrix_mul(empty_list, a)
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a can't be empty
+
+    >>> matrix_mul(a, empty_list)
+    Traceback (most recent call last):
+    ...
+    ValueError: m_b can't be empty
+
+- empty rows:
+
+    >>> matrix_mul(empty_rows, a)
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a can't be empty
+
+    >>> matrix_mul(a, empty_rows)
+    Traceback (most recent call last):
+    ...
+    ValueError: m_b can't be empty
+
+- uneven lists:
+
+    >>> matrix_mul(uneven_list, a)
+    Traceback (most recent call last):
+    ...
+    TypeError: each row of m_a must be of the same size
+
+    >>> matrix_mul(a, uneven_list)
+    Traceback (most recent call last):
+    ...
+    TypeError: each row of m_b must be of the same size
+
+- not all numbers:
+
+    >>> matrix_mul(not_all_nums, a)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a should contain only integers or floats
+
+    >>> matrix_mul(a, not_all_nums)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b should contain only integers or floats
+
+missing arguments:
+
+    >>> matrix_mul(a)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+    >>> matrix_mul()
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'

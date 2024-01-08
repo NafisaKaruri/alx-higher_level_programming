@@ -1,0 +1,76 @@
+The ``0-add_integer`` module
+======================
+
+Using ``add_integer``
+-------------------
+
+This is a file in reStructuredText format.
+``add_integer`` from the ``0-add_integer`` module:
+
+    >>> add_integer = __import__("0-add_integer").add_integer
+
+Basic:
+
+    >>> add_integer(1, 2)
+    3
+
+Test int and default:
+
+    >>> add_integer(0)
+    98
+
+Test int negative and negative:
+
+    >>> add_integer(-1, -9)
+    -10
+
+Test int negative and positive:
+
+    >>> add_integer(-1, 9)
+    8
+
+Test int positive and negative:
+
+    >>> add_integer(9, -1)
+    8
+
+Test float positive and default:
+
+    >>> add_integer(1000.9)
+    1098
+
+Test float negative and default:
+
+    >>> add_integer(-10.9)
+    88
+
+Test float positive and positive:
+
+    >>> add_integer(8.6, 2.0)
+    10
+
+Test float negative and negative:
+
+    >>> add_integer(-8.9, -2.4)
+    -10
+
+Test string and default:
+
+    >>> add_integer("Hehe")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+Test int and string:
+
+    >>> add_integer(1, "Hehe")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
+None:
+
+    >>> add_integer()
+    Traceback (most recent call last):
+    ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
