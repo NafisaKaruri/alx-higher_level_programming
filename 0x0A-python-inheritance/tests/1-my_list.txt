@@ -1,0 +1,79 @@
+The ``1-my_list`` module
+======================
+
+Using ``MyList``
+-------------------
+
+This is a file in reStructuredText format.
+`MyList`` from the ``1-my_list`` module:
+
+    >>> MyList = __import__("1-my_list").MyList
+
+empty list:
+
+    >>> lst = MyList()
+    >>> isinstance(lst, list)
+    True
+    >>> lst.print_sorted()
+    []
+
+positive ints:
+
+    >>> lst.append(1)
+    >>> lst.append(3)
+    >>> lst.append(2)
+    >>> lst.print_sorted()
+    [1, 2, 3]
+
+positive ints with a zero:
+
+    >>> lst.append(0)
+    >>> lst.print_sorted()
+    [0, 1, 2, 3]
+
+positive with infinite int:
+
+    >>> lst.append(int('inf'))
+    Traceback (most recent call last):
+    ...
+    ValueError: invalid literal for int() with base 10: 'inf'
+
+max possitive int:
+
+    >>> lst.append(10000000000000000000000000000000000000000000)
+    >>> lst.print_sorted()
+    [0, 1, 2, 3, 10000000000000000000000000000000000000000000]
+
+negative ints:
+
+    >>> lst.append(-1)
+    >>> lst.append(-2)
+    >>> lst.print_sorted()
+    [-2, -1, 0, 1, 2, 3, 10000000000000000000000000000000000000000000]
+
+duplicated elements:
+
+    >>> lst.append(0)
+    >>> lst.append(-1)
+    >>> lst.append(1)
+    >>> lst.print_sorted()
+    [-2, -1, -1, 0, 0, 1, 1, 2, 3, 10000000000000000000000000000000000000000000]
+
+all the same:
+
+    >>> lst.clear()
+    >>> lst.append(1)
+    >>> lst.append(1)
+    >>> lst.append(1)
+    >>> lst.append(1)
+    >>> lst.append(1)
+    >>> lst.print_sorted()
+    [1, 1, 1, 1, 1]
+
+None:
+
+    >>> lst.append(None)
+    >>> lst.print_sorted()
+    Traceback (most recent call last):
+    ...
+    TypeError: unorderable types: NoneType() < int()
