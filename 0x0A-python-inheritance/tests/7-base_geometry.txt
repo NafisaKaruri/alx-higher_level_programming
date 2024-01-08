@@ -20,6 +20,13 @@ Basic:
 
     >>> b.integer_validator("cheese", 1)
 
+- test the area method:
+
+    >>> b.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
 ValueErrors:
 
 - zero value:
