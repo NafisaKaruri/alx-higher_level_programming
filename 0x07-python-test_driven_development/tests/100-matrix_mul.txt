@@ -21,7 +21,7 @@ normal tests:
     [[7, 10], [15, 22]]
 
 error inputs:
-
+    >>> int_list = [1, 2, 3]
     >>> not_matrix = "hehe"
     >>> strings = ["hehe", "hoho"]
     >>> string_matrix = [["hehe"], ["hoho"]]
@@ -37,6 +37,18 @@ error tests:
     Traceback (most recent call last):
     ...
     ValueError: m_a and m_b can't be multiplied
+
+- list of integers:
+
+    >>> matrix_mul(int_list, a)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list of lists
+
+    >>> matrix_mul(a, int_list)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list of lists
 
 - not a matrix:
 
