@@ -30,7 +30,7 @@ class TestMaxInteger(unittest.TestCase):
         """
         lst = []
         result = max_integer(lst)
-        self.assertEqual(result, None)
+        self.assertEqual(result, 1)
 
     def test_negatives(self):
         """
