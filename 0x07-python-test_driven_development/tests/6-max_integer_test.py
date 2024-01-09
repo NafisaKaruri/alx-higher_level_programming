@@ -93,6 +93,31 @@ class TestMaxInteger(unittest.TestCase):
         result = max_integer(lst)
         self.assertEqual(result, "Ho")
 
+    def test_list_of_lists(self):
+        """
+        Test list of lists of integers
+        raise a TypeError
+        """
+        lst = [[1, 2], [3, 4]]
+        self.assertRaises(TypeError, max_integer, lst)
+
+    def test_list_of_lists_varying_sizes(self):
+        """
+        Test list of lists where inner lists are of different sizes
+        raise a TypeError
+        """
+        lst = [[1, 2], [3, 4, 5]]
+        self.assertRaises(TypeError, max_integer, lst)
+
+    def test_matrix_multiplication(self):
+        """
+        Test matrix multiplication
+        raise a ValueError
+        """
+        lst1 = [[1, 2], [3, 4]]
+        lst2 = [[5, 6], [7, 8]]
+        self.assertRaises(ValueError, max_integer, lst1, lst2)
+
     def test_nothing(self):
         """
         Test with None
