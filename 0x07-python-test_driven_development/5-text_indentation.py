@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""Defines the text_indentation method"""
+
+
 def text_indentation(text):
+    """prints a text with 2 \n after each .?:"""
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
