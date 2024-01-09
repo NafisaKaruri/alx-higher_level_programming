@@ -30,7 +30,7 @@ class TestMaxInteger(unittest.TestCase):
         """
         lst = []
         result = max_integer(lst)
-        self.assertEqual(result, 1)
+        self.assertEqual(result, None)
 
     def test_negatives(self):
         """
@@ -90,6 +90,3 @@ class TestMaxInteger(unittest.TestCase):
         raise a TypeError
         """
         self.assertRaises(TypeError, max_integer, None)
-
-    if __name__ == '__main__':
-        unittest.main()
