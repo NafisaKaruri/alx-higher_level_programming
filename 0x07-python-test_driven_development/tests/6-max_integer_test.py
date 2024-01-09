@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""Defines a class for a unittest for max_integer module"""
-
-
+"""Unittest for max_integer([..])
+"""
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
@@ -84,6 +83,24 @@ class TestMaxInteger(unittest.TestCase):
         lst = ["Ho", "Hehe"]
         result = max_integer(lst)
         self.assertEqual(result, "Ho")
+
+    def test_max_in_middle(self):
+        """
+        Test list with the max in the middle
+        return the middle
+        """
+        lst = [1, 3, 2]
+        result = max_integer(lst)
+        self.assertEqual(result, 3)
+
+    def test_empty_list(self):
+        """
+        Test empty list
+        return should be 1
+        """
+        lst = []
+        result = max_integer(lst)
+        self.assertEqual(result, 1)
 
     def test_nothing(self):
         """
