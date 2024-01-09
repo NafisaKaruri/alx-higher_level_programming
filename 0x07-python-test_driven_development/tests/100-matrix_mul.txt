@@ -38,6 +38,11 @@ error tests:
     ...
     ValueError: m_a and m_b can't be multiplied
 
+    >>> matrix_mul([[1, 2, 3], [4, 5, 6]], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a and m_b can't be multiplied
+
 - list of integers:
 
     >>> matrix_mul(int_list, a)
