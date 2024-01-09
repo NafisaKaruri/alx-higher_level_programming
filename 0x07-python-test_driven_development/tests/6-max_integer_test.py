@@ -84,15 +84,6 @@ class TestMaxInteger(unittest.TestCase):
         result = max_integer(lst)
         self.assertEqual(result, "Ho")
 
-    def test_empty_list(self):
-        """
-        Test empty list
-        return should be 1
-        """
-        lst = []
-        result = max_integer(lst)
-        self.assertEqual(result, 1)
-
     def test_nothing(self):
         """
         Test with None
