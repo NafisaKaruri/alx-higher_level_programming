@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""""
+"""adds all arguments to a list and save to a file"""
 
 
 import json
