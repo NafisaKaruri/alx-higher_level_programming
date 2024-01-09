@@ -20,6 +20,8 @@ normal tests:
     [[0.25, 0.5, 0.75], [1.0, 1.25, 1.5], [1.75, 2.0, 2.25]]
     >>> print(matrix_divided(b, 3))
     [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+    >>> print(matrix_divided(b, float('inf')))
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
 
 error inputs:
 
@@ -31,6 +33,11 @@ error inputs:
     >>> not_all_nums = [["a", 1, 2], [3, "2b", 4]]
 
 error tests:
+
+    >>> matrix_divided(a, "hey")
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
 
     >>> matrix_divided(nothin, 2)
     Traceback (most recent call last):
@@ -69,4 +76,14 @@ division by zero:
     ...
     ZeroDivisionError: division by zero
 
-    TypeError: add_integer() missing 1 required positional argument: 'a'
+argumets missing:
+
+    >>> matrix_divided([[1, 2]])
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+    >>> matrix_divided()
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'

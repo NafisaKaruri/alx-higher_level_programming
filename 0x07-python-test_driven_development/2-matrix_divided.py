@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""defines the matrix_divided method"""
+
+
 def matrix_divided(matrix, div):
+    """divided matrix by div"""
     err = "matrix must be a matrix (list of lists) of integers/floats"
 
     # division by zero
