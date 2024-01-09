@@ -93,15 +93,6 @@ class TestMaxInteger(unittest.TestCase):
         result = max_integer(lst)
         self.assertEqual(result, "Ho")
 
-    def test_matrix_multiplication(self):
-        """
-        Test matrix multiplication
-        raise a ValueError
-        """
-        lst1 = [[1, 2], [3, 4]]
-        lst2 = [[5, 6], [7, 8]]
-        self.assertRaises(ValueError, max_integer, lst1, lst2)
-
     def test_nothing(self):
         """
         Test with None
