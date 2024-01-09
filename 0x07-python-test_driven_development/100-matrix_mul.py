@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""Defines matrix_mul method"""
+
+
+
 def matrix_mul(m_a, m_b):
     # check if m_a and m_b are lists
     if not isinstance(m_a, list):
