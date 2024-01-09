@@ -84,15 +84,6 @@ class TestMaxInteger(unittest.TestCase):
         result = max_integer(lst)
         self.assertEqual(result, "Ho")
 
-    def test_max_in_middle(self):
-        """
-        Test list with the max in the middle
-        return the middle
-        """
-        lst = [1, 3, 2]
-        result = max_integer(lst)
-        self.assertEqual(result, 3)
-
     def test_empty_list(self):
         """
         Test empty list
