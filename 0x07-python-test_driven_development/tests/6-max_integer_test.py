@@ -99,3 +99,10 @@ class TestMaxInteger(unittest.TestCase):
         raise a TypeError
         """
         self.assertRaises(TypeError, max_integer, None)
+
+    def test_missing_arguments(self):
+        """
+        Test missing arguments
+        raise a TypeError
+        """
+        self.assertRaises(TypeError, max_integer)
