@@ -2,7 +2,6 @@
 """Defines matrix_mul method"""
 
 
-
 def matrix_mul(m_a, m_b):
     """multiplies two matrices"""
     # check if m_a and m_b are lists
