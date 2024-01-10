@@ -21,6 +21,7 @@ read_size = 0
 # lines read counter
 count = 0
 
+
 def printer():
     """
     Prints the metrics so far
@@ -29,6 +30,7 @@ def printer():
     for key in sorted(status_codes):
         if status_codes[key] > 0:
             print('{}: {}'.format(key, status_codes[key]))
+
 
 try:
     for line in stdin:
@@ -43,7 +45,7 @@ try:
 
         if count % 10 == 0:
             printer()
-        printer()
+    printer()
 
 except KeyboardInterrupt as e:
     printer()
