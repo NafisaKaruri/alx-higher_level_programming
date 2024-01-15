@@ -85,3 +85,23 @@ class Rectangle(Base):
             if self.x != 0:
                 print(' ' * self.x, end='')
             print('#' * self.width)
+
+    def __update(self, id=None, width=None, height=None, x=None, y=None):
+        """assigns an argument to each attribute"""
+        if id is not None:
+            self.id = id
+        if width is not None:
+            self.width = width
+        if height is not None:
+            self.height = height
+        if x is not None:
+            self.x = x
+        if y is not None:
+            self.y = y
+
+    def update(self, *args, **kwargs):
+        """updates arguments to each attribute with and without keywords"""
+        if args:
+            self.__update(*args)
+        elif kwargs:
+            self.__update(**kwargs)

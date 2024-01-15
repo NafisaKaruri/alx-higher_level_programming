@@ -359,5 +359,114 @@ and 'height'"
         s = '[Rectangle] (1) 1/0 - 1/1'
         self.assertEqual(str(r2), s)
 
+    # ----------------- Test 8: update method -----------------
+    def test_update_no_args(self):
+        """test update with no arguments"""
+        r = Rectangle(1, 2)
+        with self.assertRaises(TypeError) as e:
+            Rectangle.update()
+        err = "update() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(e.exception), err)
+
+    def test_update_normal(self):
+        """test update with argument orders"""
+        r = Rectangle(1, 2)
+        d = r.__dict__.copy()
+        r.update(20)
+        d['id'] = 20
+        self.assertEqual(r.__dict__, d)
+
+        r.update(20, 30)
+        d['_Rectangle__width'] = 30
+        self.assertEqual(r.__dict__, d)
+
+        r.update(20, 30, 40)
+        d['_Rectangle__height'] = 40
+        self.assertEqual(r.__dict__, d)
+
+        r.update(20, 30, 40, 50)
+        d['_Rectangle__x'] = 50
+        self.assertEqual(r.__dict__, d)
+
+        r.update(20, 30, 40, 50, 60)
+        d['_Rectangle__y'] = 60
+        self.assertEqual(r.__dict__, d)
+
+    def test_update_errs(self):
+        """test update with argument orders, errors"""
+        r = Rectangle(1, 2)
+        d = r.__dict__.copy()
+
+        r.update(10)
+        d['id'] = 10
+        self.assertEqual(r.__dict__, d)
+
+        with self.assertRaises(ValueError) as e:
+            r.update(10, -1)
+        err = 'width must be > 0'
+        self.assertEqual(str(e.exception), err)
+
+        with self.assertRaises(ValueError) as e:
+            r.update(10, 1, -1)
+        err = 'height must be > 0'
+        self.assertEqual(str(e.exception), err)
+
+        with self.assertRaises(ValueError) as e:
+            r.update(10, 1, 2, -1)
+        err = 'x must be >= 0'
+        self.assertEqual(str(e.exception), err)
+
+        with self.assertRaises(ValueError) as e:
+            r.update(10, 1, 2, 0, -1)
+        err = 'y must be >= 0'
+        self.assertEqual(str(e.exception), err)
+
+    def test_update_kwargs(self):
+        """test update with kwargs"""
+        r = Rectangle(1, 2)
+        d = r.__dict__.copy()
+
+        r.update(id=10)
+        d['id'] = 10
+        self.assertEqual(r.__dict__, d)
+
+        r.update(width=20)
+        d['_Rectangle__width'] = 20
+        self.assertEqual(r.__dict__, d)
+
+        r.update(height=30)
+        d['_Rectangle__height'] = 30
+        self.assertEqual(r.__dict__, d)
+
+        r.update(x=10)
+        d['_Rectangle__x'] = 10
+        self.assertEqual(r.__dict__, d)
+
+        r.update(y=10)
+        d['_Rectangle__y'] = 10
+        self.assertEqual(r.__dict__, d)
+
+    def test_update_kwargs_2(self):
+        """test update with kwargs"""
+        r = Rectangle(1, 2)
+        d = r.__dict__.copy()
+
+        r.update(width=5, id=10)
+        d['_Rectangle__width'] = 5
+        d['id'] = 10
+        self.assertEqual(r.__dict__, d)
+
+        r.update(width=5, id=10, height=1)
+        d['_Rectangle__height'] = 1
+        self.assertEqual(r.__dict__, d)
+
+        r.update(y=5, width=5, id=10, height=1)
+        d['_Rectangle__y'] = 5
+        self.assertEqual(r.__dict__, d)
+
+        r.update(y=5, width=5, x=5, id=10, height=1)
+        d['_Rectangle__x'] = 5
+        self.assertEqual(r.__dict__, d)
+
 if __name__ == "__main__":
     unittest.main()
