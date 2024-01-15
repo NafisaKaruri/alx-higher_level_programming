@@ -15,6 +15,12 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
+    def __str__(self):
+        """returns [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
+        return '[{}] ({}) {}/{} - {}/{}'.\
+            format(type(self).__name__, self.id, self.x, self.y,
+                   self.width, self.height)
+
     @property
     def width(self):
         """return the value of the width"""
@@ -74,5 +80,8 @@ class Rectangle(Base):
 
     def display(self):
         """prints in stdout the rectangle with #"""
+        print('\n' * self.y, end='')
         for i in range(self.height):
+            if self.x != 0:
+                print(' ' * self.x, end='')
             print('#' * self.width)

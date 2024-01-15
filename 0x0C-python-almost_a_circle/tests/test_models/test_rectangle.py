@@ -12,11 +12,11 @@ from contextlib import redirect_stdout
 class TestRectangle(unittest.TestCase):
     """Tests the Rectangle class"""
 
-    def setup(self):
+    def setUp(self):
         """instantiate class"""
         Base._Base__nb_objects = 0
 
-    def teardown(self):
+    def tearDown(self):
         """Clears everything after each test method"""
         pass
 
@@ -134,7 +134,7 @@ and 'height'"
         self.assertEqual(r.x, 3)
         self.assertEqual(r.y, 4)
 
-    # ------------------ Test 2: invalid types ------------------
+    # ------------------ Test 3: invalid types ------------------
     def invalid_types(self):
         """tuple of invalid types to test"""
         t = (1.2, -1.2, float('inf'), float('-inf'), True, False, 'hello',
@@ -182,7 +182,7 @@ and 'height'"
                 setattr(r, attr, 0)
             self.assertEqual(str(e.exception), err)
 
-    # ------------------ Test 2: property ------------------
+    # ------------------ Test 4: property ------------------
     def test_property(self):
         """test setters and getters"""
         r = Rectangle(1, 2)
@@ -200,7 +200,7 @@ and 'height'"
         self.assertEqual(r.x, 0)
         self.assertEqual(r.y, 0)
 
-    # ----------------- Test 2: area method -----------------
+    # ----------------- Test 5: area method -----------------
     def test_area_no_args(self):
         """test area with no arguments"""
         r = Rectangle(1, 2)
@@ -230,7 +230,7 @@ and 'height'"
         r1 = Rectangle(3, 10, 0, 0, 1)
         self.assertEqual(r1.area(), 30)
 
-    # ----------------- Test 2: display method -----------------
+    # ----------------- Test 6: display method -----------------
     def test_display_no_args(self):
         """test display with no args"""
         r = Rectangle(1, 2)
@@ -256,12 +256,108 @@ and 'height'"
         s = '###\n###\n###\n###\n###\n'
         self.assertEqual(f.getvalue(), s)
 
-        r = Rectangle(2, 3, 3, 4)
+        r = Rectangle(2, 3)
         f = io.StringIO()
         with redirect_stdout(f):
             r.display()
         s = '##\n##\n##\n'
         self.assertEqual(f.getvalue(), s)
+
+    def test_display_x_y(self):
+        """test display with x, y in mind"""
+        r = Rectangle(2, 3, 7, 8)
+        f = io.StringIO()
+        with redirect_stdout(f):
+            r.display()
+        s = """
+
+
+
+
+
+
+
+       ##
+       ##
+       ##
+"""
+        self.assertEqual(f.getvalue(), s)
+
+        r = Rectangle(1, 1, 10, 10)
+        f = io.StringIO()
+        with redirect_stdout(f):
+            r.display()
+        s = """
+
+
+
+
+
+
+
+
+
+          #
+"""
+        self.assertEqual(f.getvalue(), s)
+
+        r = Rectangle(1, 1, 10)
+        f = io.StringIO()
+        with redirect_stdout(f):
+            r.display()
+        s = """          #
+"""
+        self.assertEqual(f.getvalue(), s)
+
+        r = Rectangle(1, 1, 0, 10)
+        f = io.StringIO()
+        with redirect_stdout(f):
+            r.display()
+        s = """
+
+
+
+
+
+
+
+
+
+#
+"""
+        self.assertEqual(f.getvalue(), s)
+
+    # ----------------- Test 7: __str__ method -----------------
+    def test_str_no_args(self):
+        """test str with no args"""
+        r = Rectangle(1, 2)
+        with self.assertRaises(TypeError) as e:
+            Rectangle.__str__()
+        err = "__str__() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(e.exception), err)
+
+    def test_str(self):
+        """test str"""
+        r = Rectangle(1, 2)
+        s = '[Rectangle] (1) 0/0 - 1/2'
+        self.assertEqual(str(r), s)
+
+        r = Rectangle(1, 2, 3)
+        s = '[Rectangle] (2) 3/0 - 1/2'
+        self.assertEqual(str(r), s)
+
+        r = Rectangle(1, 2, 3, 4)
+        s = '[Rectangle] (3) 3/4 - 1/2'
+        self.assertEqual(str(r), s)
+
+        Base._Base__nb_objects = 0
+        r1 = Rectangle(1, 2, 3, 4, 20)
+        s = '[Rectangle] (20) 3/4 - 1/2'
+        self.assertEqual(str(r1), s)
+
+        r2 = Rectangle(1, 1, 1)
+        s = '[Rectangle] (1) 1/0 - 1/1'
+        self.assertEqual(str(r2), s)
 
 if __name__ == "__main__":
     unittest.main()
