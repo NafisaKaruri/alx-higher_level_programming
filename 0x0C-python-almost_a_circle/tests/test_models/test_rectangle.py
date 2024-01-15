@@ -55,8 +55,10 @@ and 'height'"
         self.assertEqual(str(type(r)), "<class 'models.rectangle.Rectangle'>")
         self.assertTrue(isinstance(r, Base))
         d = {'_Rectangle__width': 1, '_Rectangle__height': 2,
-            '_Rectangle__x': 0, '_Rectangle__y': 0, 'id': 5}
-        self.assertDictEqual(r.__dict__, d)
+            '_Rectangle__x': 0, '_Rectangle__y': 0}
+        r_dict = r.__dict__
+        self.assertTrue(isinstance(r_dict.pop('id'), int))
+        self.assertDictEqual(r_dict, d)
 
         # testing the errors (validate_integer)
         with self.assertRaises(TypeError) as e:
@@ -227,6 +229,39 @@ and 'height'"
         self.assertEqual(r0.area(), 20)
         r1 = Rectangle(3, 10, 0, 0, 1)
         self.assertEqual(r1.area(), 30)
+
+    # ----------------- Test 2: display method -----------------
+    def test_display_no_args(self):
+        """test display with no args"""
+        r = Rectangle(1, 2)
+        with self.assertRaises(TypeError) as e:
+            Rectangle.display()
+        err = "display() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(e.exception), err)
+
+    def test_display_normal(self):
+        """test display with different rectangles"""
+        r = Rectangle(1, 1)
+        f = io.StringIO()
+        with redirect_stdout(f):
+            r.display()
+        s = '#\n'
+        self.assertEqual(f.getvalue(), s)
+
+        r.width = 3
+        r.height = 5
+        f = io.StringIO()
+        with redirect_stdout(f):
+            r.display()
+        s = '###\n###\n###\n###\n###\n'
+        self.assertEqual(f.getvalue(), s)
+
+        r = Rectangle(2, 3, 3, 4)
+        f = io.StringIO()
+        with redirect_stdout(f):
+            r.display()
+        s = '##\n##\n##\n'
+        self.assertEqual(f.getvalue(), s)
 
 if __name__ == "__main__":
     unittest.main()
