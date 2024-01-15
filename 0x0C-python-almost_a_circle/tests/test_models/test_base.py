@@ -13,6 +13,7 @@ class TestBase(unittest.TestCase):
         """instantiation"""
         Base._Base__nb_objects = 0
         pass
+
     def tearDown(self):
         """clear everything each test case"""
         pass
@@ -43,7 +44,8 @@ class TestBase(unittest.TestCase):
         """test the init method with extra args"""
         with self.assertRaises(TypeError) as e:
             Base.__init__(self, 1, 2)
-        err = "__init__() takes from 1 to 2 positional arguments but 3 were given"
+        err = "__init__() takes from 1 to 2 positional arguments but 3 \
+               were given"
 
     def test_ids(self):
         """test ids"""
