@@ -25,3 +25,4 @@ https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-
 14- how to compute the average of a column in a table
 15- how to list the number of records with the same specifications (groups)
 16- how to list records of a table with specific column existing
+17- how to convert a database to UTF8
