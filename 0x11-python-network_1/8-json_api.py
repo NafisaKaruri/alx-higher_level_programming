@@ -8,7 +8,7 @@ if __name__ == "__main__":
     import requests
 
     letter = "" if len(argv) == 1 else argv[1]
-    r = requests.post("http://0.0.0.0:5000/search_user", {"q":letter})
+    r = requests.post("http://0.0.0.0:5000/search_user", {"q": letter})
     try:
         response = r.json()
         if response == {}:
