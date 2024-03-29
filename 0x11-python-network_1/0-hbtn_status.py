@@ -3,8 +3,8 @@
 
 
 if __name__ == "__main__":
-    from urllib.request import urlopen
-    with urlopen('https://alx-intranet.hbtn.io/status') as response:
+    import urllib.request
+    with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as response:
         r = response.read()
         print('Body response:')
         print('    - type: {}'.format(type(r)))
